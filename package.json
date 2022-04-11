@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js",
-    "build":"cd client && npm run build",
-    "install-client":"cd client && npm install",
-    "client":"cd client && npm start",
-    "heroku-postbuild":"npm run install-client && npm run build"
+    "start": "node index.js",
+    "heroku-postbuild":"cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +14,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.9"
+    "mongoose": "^6.2.10"
   }
 }

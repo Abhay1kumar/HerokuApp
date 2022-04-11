@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors')
-require('./database/config')
+require('./database/config');
 const User = require('./database/user')
 const Product = require('./database/Product')
 const PORT = process.env.PORT || 5000
 
 const Jwt = require('jsonwebtoken');
+const { dirname } = require('path');
 const jwtKey = "e-comm";
 const app = express();
 
@@ -112,9 +113,14 @@ app.get('/search/:key',verifyToken, async (req, res) => {
     res.send(data)
 })
 
-if(process.env.NODE_ENV = "production"){
+
+if(process.env.NODE.ENV ==='production'){
     app.use(express.static('client/build'));
-    const path = require('path');
+
+    app.get('*', (res, req)=>{
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+
+    });
 }
 
 app.listen(PORT, ()=>{
