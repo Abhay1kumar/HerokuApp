@@ -5,6 +5,7 @@ const User = require('./database/user')
 const Product = require('./database/Product')
 const PORT = process.env.PORT || 5000
 
+
 const Jwt = require('jsonwebtoken');
 const { dirname } = require('path');
 const jwtKey = "e-comm";
@@ -114,7 +115,7 @@ app.get('/search/:key',verifyToken, async (req, res) => {
 })
 
 
-if(process.env.NODE.ENV ==='production'){
+if(process.env.NODE_ENV ==='production'){
     app.use(express.static('client/build'));
 
     app.get('*', (res, req)=>{
